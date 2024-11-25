@@ -4,9 +4,11 @@ import { UserRepository } from "src/common/repositories/user.repository";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "src/common/entities/user/user.entity";
 import { UserController } from "./user.controller";
+import { WelcomeQueueService } from "src/microservices/queues/welcome-queue/welcome-queue.service";
+import { WelcomeQueueModule } from "src/microservices/queues/welcome-queue/welcome-queue.module";
 
 @Module({
-	imports: [TypeOrmModule.forFeature([User])],
+	imports: [TypeOrmModule.forFeature([User]), WelcomeQueueModule],
 	controllers: [UserController],
 	providers: [
 		{
